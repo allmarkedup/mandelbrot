@@ -1046,42 +1046,36 @@ h6 {
   margin: 0 auto; }
 
 .Header-menuIcon path {
-  -webkit-transition: all 0.1s ease-out;
-  transition: all 0.1s ease-out; }
+  -webkit-transition: all 0.15s ease-out;
+  transition: all 0.15s ease-out; }
 
-.Header-menuIcon path:nth-of-type(1) {
-  -webkit-transform: rotate(45deg) scaleX(1.3333);
-      -ms-transform: rotate(45deg) scaleX(1.3333);
-          transform: rotate(45deg) scaleX(1.3333);
-  -webkit-transform-origin: top left;
-      -ms-transform-origin: top left;
-          transform-origin: top left; }
-
-.Header-menuIcon path:nth-of-type(2) {
-  width: 0%;
-  opacity: 0; }
-
-.Header-menuIcon path:nth-of-type(3) {
-  -webkit-transform: rotate(-45deg) scaleX(1.3333);
-      -ms-transform: rotate(-45deg) scaleX(1.3333);
-          transform: rotate(-45deg) scaleX(1.3333);
-  -webkit-transform-origin: bottom left;
-      -ms-transform-origin: bottom left;
-          transform-origin: bottom left; }
-
-.is-closed .Header-menuIcon path:nth-of-type(1) {
-  -webkit-transform: rotate(0) scaleX(1);
-      -ms-transform: rotate(0) scaleX(1);
-          transform: rotate(0) scaleX(1); }
-
-.is-closed .Header-menuIcon path:nth-of-type(2) {
-  width: 100%;
-  opacity: 1; }
-
-.is-closed .Header-menuIcon path:nth-of-type(3) {
-  -webkit-transform: rotate(0) scaleX(1);
-      -ms-transform: rotate(0) scaleX(1);
-          transform: rotate(0) scaleX(1); }
+.has-js .Frame:not(.is-closed) .Header-menuIcon {
+  /**
+    * 1. 1.412 is the ratio between side and diagonal i a square.
+    * 2. Pixel values for transform-origin (rather than keywords)
+    *    are required in Firefox at the moment.
+    */ }
+  .has-js .Frame:not(.is-closed) .Header-menuIcon path:nth-of-type(1) {
+    -webkit-transform: rotate(45deg) scaleX(1.412);
+        -ms-transform: rotate(45deg) scaleX(1.412);
+            transform: rotate(45deg) scaleX(1.412);
+    /* 1 */
+    -webkit-transform-origin: 56px 56px;
+        -ms-transform-origin: 56px 56px;
+            transform-origin: 56px 56px;
+    /* 2 */ }
+  .has-js .Frame:not(.is-closed) .Header-menuIcon path:nth-of-type(2) {
+    width: 0;
+    opacity: 0; }
+  .has-js .Frame:not(.is-closed) .Header-menuIcon path:nth-of-type(3) {
+    -webkit-transform: rotate(-45deg) scaleX(1.412);
+        -ms-transform: rotate(-45deg) scaleX(1.412);
+            transform: rotate(-45deg) scaleX(1.412);
+    /* 1 */
+    -webkit-transform-origin: 56px 264px;
+        -ms-transform-origin: 56px 264px;
+            transform-origin: 56px 264px;
+    /* 2 */ }
 
 .Navigation {
   display: inline-block;
