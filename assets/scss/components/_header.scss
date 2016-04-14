@@ -45,39 +45,27 @@
         margin: 0 auto;
     }
 }
-
-.Header-menuIcon {
-    path {
-        transition: all 0.1s ease-out;
-    }
-
+.Header-menuIcon path {
+    transition: all 0.15s ease-out;
+}
+.has-js .Frame:not(.is-closed) .Header-menuIcon {
+    /**
+    * 1. 1.412 is the ratio between side and diagonal i a square.
+    * 2. Pixel values for transform-origin (rather than keywords)
+    *    are required in Firefox at the moment.
+    */
     path:nth-of-type(1) {
-        transform: rotate(45deg) scaleX(1.3333);
-        transform-origin: top left;
+        transform: rotate(45deg) scaleX(1.412); /* 1 */
+        transform-origin: 56px 56px; /* 2 */
     }
 
     path:nth-of-type(2) {
-        width: 0%;
+        width: 0;
         opacity: 0;
     }
 
     path:nth-of-type(3) {
-        transform: rotate(-45deg) scaleX(1.3333);
-        transform-origin: bottom left;
-    }
-}
-
-.is-closed .Header-menuIcon {
-    path:nth-of-type(1) {
-        transform: rotate(0) scaleX(1);
-    }
-
-    path:nth-of-type(2) {
-        width: 100%;
-        opacity: 1;
-    }
-
-    path:nth-of-type(3) {
-        transform: rotate(0) scaleX(1);
+        transform: rotate(-45deg) scaleX(1.412); /* 1 */
+        transform-origin: 56px 264px; /* 2 */
     }
 }
