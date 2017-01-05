@@ -7,6 +7,7 @@
              <iframe
                 class="Preview-iframe"
                 data-role="window"
+                data-behaviour="context-renderer"
                 src="{{ previewUrl }}"
                 sandbox="allow-same-origin allow-scripts"
                 {% if entity.display %} style="{% for property, value in entity.display %}{{ property }}: {{ value }} !important; {% endfor %}"{% endif %}
@@ -17,4 +18,5 @@
         <div class="Preview-handle" data-role="resize-handle"></div>
         <div class="Preview-overlay"></div>
     </div>
+    <script type="fractal/context-template">{{ entity.content }}</script>
 </div>
