@@ -1370,6 +1370,7 @@ h6 {
         text-decoration: underline; }
 
 .CodeMirror {
+  background-color: transparent;
   width: 100%; }
 
 .Document {
