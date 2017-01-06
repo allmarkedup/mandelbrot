@@ -1352,18 +1352,26 @@ h6 {
   color: #535363;
   opacity: 0.6; }
 
-.Code {
+.Code,
+.CodeMirror {
   display: block;
   background-color: #f6f6f6;
   -webkit-overflow-scrolling: touch; }
-  .Code pre {
+  .Code pre,
+  .CodeMirror pre {
     padding: 0.75rem;
     -webkit-overflow-scrolling: touch; }
-    .Code pre a {
+    .Code pre a,
+    .CodeMirror pre a {
       color: #28f;
       text-decoration: none; }
-      .Code pre a:hover {
+      .Code pre a:hover,
+      .CodeMirror pre a:hover {
         text-decoration: underline; }
+
+.CodeMirror {
+  background-color: transparent;
+  width: 100%; }
 
 .Document {
   padding: 1.5rem 2rem; }

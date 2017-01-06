@@ -11,6 +11,8 @@ const utils      = require('./utils');
 const framer     = require('./components/frame');
 const Tree       = require('./components/tree');
 const Pen        = require('./components/pen');
+const Editor     = require('./components/context-editor');
+const Renderer   = require('./components/context-renderer');
 
 global.fractal = {
     events: events
@@ -18,6 +20,7 @@ global.fractal = {
 
 const frame     = framer($('#frame'));
 const navTrees  = $.map($('[data-behaviour="tree"]'), t => new Tree(t));
+
 let pens        = [];
 
 loadPen();
@@ -44,4 +47,15 @@ function loadPen(){
     setTimeout(function(){
         pens = $.map($('[data-behaviour="pen"]'), p => new Pen(p));
     }, 1);
+}
+
+let editor = $('[data-behaviour="context-editor"]');
+let preview = $('[data-behaviour="preview"]');
+
+if (editor.length && preview.length) {
+    editor = new Editor(editor.get(0));
+    let renderer = new Renderer(preview.get(0));
+    editor.on('data', function(e, data) {
+        renderer.update(data);
+    });
 }

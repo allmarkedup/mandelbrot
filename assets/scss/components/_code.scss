@@ -1,4 +1,5 @@
-.Code {
+.Code,
+.CodeMirror {
     display: block;
     background-color: $color-background-offset;
     -webkit-overflow-scrolling: touch;
@@ -15,4 +16,9 @@
             }
         }
     }
+}
+
+.CodeMirror {
+  background-color: transparent;
+  width: 100%;
 }
