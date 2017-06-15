@@ -18,7 +18,12 @@ module.exports = function(options){
             mount: 'themes/mandelbrot',
         },
         version: packageJSON.version,
-        favicon: null
+        favicon: null,
+        jsBeautify: {
+            indent_size: 4,
+            preserve_newlines: true,
+            max_preserve_newlines: 1
+        }
     });
 
     config.panels  = config.panels || ['html', 'view', 'context', 'resources', 'info', 'notes'];
@@ -93,7 +98,7 @@ module.exports = function(options){
     });
 
     theme.on('init', function(env, app){
-        require('./filters')(theme, env, app);
+        require('./filters')(theme, env, app, config);
     });
 
     let handles = null;

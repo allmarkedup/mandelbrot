@@ -5,7 +5,7 @@ const Path         = require('path');
 const beautifyHTML = require('js-beautify').html;
 
 
-module.exports = function(theme, env, app){
+module.exports = function(theme, env, app, config){
 
     env.engine.addFilter('url', function(item){
         if (item.isDoc) {
@@ -24,12 +24,7 @@ module.exports = function(theme, env, app){
     });
 
     env.engine.addFilter('beautify', function(str) {
-        return beautifyHTML(str, {
-            // TODO: move to config
-            indent_size: 4,
-            preserve_newlines: true,
-            max_preserve_newlines: 1
-        });
+        return beautifyHTML(str, config.jsBeautify);
     });
 
     env.engine.addFilter('resourceUrl', function(str) {
@@ -68,4 +63,4 @@ module.exports = function(theme, env, app){
         });
     });
 
- };
+};
