@@ -1,0 +1,7 @@
+<div class="Tree-aside">
+    Built on:
+    <time datetime="{{ frctl.theme.get('now').toISOString() }}"
+          title="{{ frctl.theme.get('now').toLocaleString(frctl.theme.get('lang')) }}">
+        {{ frctl.theme.get('now').toLocaleDateString(frctl.theme.get('lang')) }}
+    </time>
+</div>
