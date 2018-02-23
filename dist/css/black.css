@@ -2062,6 +2062,8 @@ h6 {
   .Prose code,
   .Prose code pre {
     background-color: rgba(83, 83, 99, 0.075); }
+  .Prose img {
+    max-width: 100%; }
   .Prose p code,
   .Prose li code {
     padding: 0.125rem; }
