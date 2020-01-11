@@ -5,8 +5,7 @@
         </div>
         <div class="Tree-aside">
             {{ frctl.theme.get('labels.builtOn') }}:
-            <time datetime="{{ frctl.theme.get('now').toISOString() }}"
-                title="{{ frctl.theme.get('now').toLocaleString(frctl.theme.get('lang')) }}">
+            <time datetime="{{ frctl.theme.get('now').toISOString() }}">
                 {{ frctl.theme.get('now').toLocaleDateString(frctl.theme.get('lang')) }}
             </time>
         </div>
