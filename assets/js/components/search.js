@@ -1,44 +1,56 @@
 'use strict';
 
-const $  = global.jQuery;
+const $ = global.jQuery;
 
 class Search {
 
-  constructor() {
-    const self = this;
+    constructor(el, trees) {
+        this._el = $(el);
+        this._trees = trees;
+        this._input = this._el.find('[data-role="input"]');
 
-    $('#search-input').on('keyup blur change', function() {
-      const key = this.value.toUpperCase();
-      $('.Navigation ul').each(function() {
-        self.search(this, key);
-      });
-    });
-  }
+        this._el.on('submit', (event) => {
+            event.preventDefault();
+        })
 
-  search(list, key) {
-    let childTree, $li, i;
-    const li = $(list).children('li');
-    let match = false;
+        this._input.on('input', (event) => {
+            const key = event.currentTarget.value.toUpperCase();
 
-    for (i = 0; i < li.length; i++) {
-      $li = $(li[i]);
-      childTree = $(li[i]).children('ul');
-
-      if ($li.parents('.Tree-collection').find('> .Tree-collectionLabel').text().toUpperCase().indexOf(key) !== -1 || 
-          $li.text().toUpperCase().indexOf(key) !== -1 || 
-          ($li.find('[data-tags]').length > 0 && $li.find('[data-tags]').attr('data-tags').toUpperCase().indexOf(key) !== -1)
-      ) {
-        match = true;
-        $li.parents('.Tree-collection').removeClass('is-closed');
-        $li.show();
-        this.search(childTree, key);
-      } else {
-        match = false;
-        $li.hide();
-      }
+            trees.forEach((tree) => this.search(tree._el.children('ul'), key, tree._collections));
+        });
     }
-    return match;
-  }
+
+    search(list, key, collections) {
+        const items = $(list).children('li');
+
+        items.each((_index, item) => {
+            const $li = $(item);
+            const collectionLabel = $li.parents('.Tree-collection').find('> .Tree-collectionLabel').text();
+            const itemLabel = $li.text();
+            const childrenWithTags = $li.find('[data-tags]');
+            const tagAttributes = childrenWithTags.length > 0 ? childrenWithTags.attr('data-tags') : '';
+
+            const collectionLabelMatches = collectionLabel.toUpperCase().indexOf(key) !== -1;
+            const itemLabelMatches = itemLabel.toUpperCase().indexOf(key) !== -1;
+            const tagAttributesMatch = tagAttributes.toUpperCase().indexOf(key) !== -1;
+
+            if (collectionLabelMatches || itemLabelMatches || tagAttributesMatch) {
+                if (key.length) {
+                    $li.parents('.Tree-collection').each((_index, parent) => {
+                        const collection = collections.find((c) => c._el[0] === parent);
+
+                        collection.open();
+                    });
+                }
+                $li.show();
+
+                // recursive search inside nested collections
+                this.search($li.children('ul'), key, collections);
+            } else {
+                $li.hide();
+            }
+        });
+    }
 }
 
 module.exports = Search;
