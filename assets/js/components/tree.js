@@ -19,13 +19,16 @@ class Tree {
         this._id = this._el[0].id;
         this._state = storage.get(`tree.${this._id}.state`, []);
         this._collections = $.map(this._el.find('[data-behaviour="collection"]'), c => new TreeCollection(c, this));
-        for (let collection of this._collections) {
+
+        for (let key in this._collections) {
+            const collection = this._collections[key];
             if (collection.containsCurrentItem()) {
                 this._state.push(collection.id);
             }
         }
         this._state = jQuery.unique(this._state);
         this._applyState();
+        events.trigger('scroll-sidebar');
         events.on('main-content-preload', (e, url) => {
             this.selectItem(getTreeUrl(url));
         });
@@ -37,8 +40,9 @@ class Tree {
     }
 
     _applyState() {
-        for (let collection of this._collections) {
-            if (this._state.includes(collection.id)) {
+        for (let key in this._collections) {
+            const collection = this._collections[key];
+            if (this._state.indexOf(collection.id) > -1) {
                 collection.open(true);
             } else {
                 collection.close(true);
