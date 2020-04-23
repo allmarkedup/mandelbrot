@@ -18,7 +18,7 @@
         }
 
         .Tree-collectionLabel {
-            span::before {
+            button::before {
                 [dir="ltr"] & {
                     background-image: url("../img/icon-navigation-closed-ltr.svg");
                 }
@@ -43,14 +43,25 @@
         background-color: $color-ui-hover;
     }
 
-    span {
+    &:focus-within {
+        outline: 1px dotted;
+        outline: 5px auto -webkit-focus-ring-color;
+    }
+
+    button {
         @include padding-inline(start, 0.75rem);
         @include margin-inline(start, -1.75rem);
         display: block;
         position: relative;
+        cursor: pointer;
+        color: $color-text;
+
+        &:focus {
+            outline: 0;
+        }
     }
 
-    span::before {
+    button::before {
         @include offset-inline(start);
         display: inline-block;
         position: absolute;
