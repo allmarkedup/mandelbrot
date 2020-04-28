@@ -13,9 +13,9 @@
     {% for item in items %}
         {% if item.isCollection or (item.isComponent and not item.isCollated and item.variants().filter('isHidden', false).size > 1) %}
         <li class="Tree-item Tree-collection Tree-depth-{{ depth }}" data-behaviour="collection" id="tree-{{ root.name }}-collection-{{ item.handle }}">
-            <h4 class="Tree-collectionLabel" data-role="toggle">
-                <button aria-expanded="false" aria-controls="tree-{{ root.name }}-collection-{{ item.handle }}-items">{{ item.label }}</button>
-            </h4>
+            <button class="Tree-collectionLabel" data-role="toggle" aria-expanded="true" aria-controls="tree-{{ root.name }}-collection-{{ item.handle }}-items">
+                {{ item.label }}
+            </button>
             <ul class="Tree-collectionItems" data-role="items" id="tree-{{ root.name }}-collection-{{ item.handle }}-items">
             {% if item.isComponent and not item.isCollated %}
             {% set items = item.variants().filter('isHidden', false).items() %}
