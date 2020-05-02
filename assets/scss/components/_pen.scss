@@ -49,6 +49,7 @@
 
 .Pen-title {
     @include font(subHeading);
+
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -83,6 +84,7 @@
 
 .Pen-handle {
     @include dragHandle;
+
     flex: 0 0 auto;
     height: $handle-size;
     margin: 0 $handle-size;

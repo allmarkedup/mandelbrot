@@ -57,6 +57,7 @@
 }
 
 // Typography
+
 @mixin font($preset) {
     @if $preset == title {
         font: bold 1.75rem/#{(32 / 28)} $font-family-sans-serif;
@@ -94,14 +95,17 @@
 }
 
 // Logical positioning
+
 @mixin padding-inline($position, $amount) {
     @if $position == start {
         [dir="ltr"] & {
             padding-left: $amount;
         }
+
         [dir="rtl"] & {
             padding-right: $amount;
         }
+
         padding-inline-start: $amount;
     }
 
@@ -109,9 +113,11 @@
         [dir="ltr"] & {
             padding-right: $amount;
         }
+
         [dir="rtl"] & {
             padding-left: $amount;
         }
+
         padding-inline-end: $amount;
     }
 }
@@ -121,9 +127,11 @@
         [dir="ltr"] & {
             margin-left: $amount;
         }
+
         [dir="rtl"] & {
             margin-right: $amount;
         }
+
         margin-inline-start: $amount;
     }
 
@@ -131,9 +139,11 @@
         [dir="ltr"] & {
             margin-right: $amount;
         }
+
         [dir="rtl"] & {
             margin-left: $amount;
         }
+
         margin-inline-end: $amount;
     }
 }
@@ -143,9 +153,11 @@
         [dir="ltr"] & {
             border-left: $style;
         }
+
         [dir="rtl"] & {
             border-right: $style;
         }
+
         border-inline-start: $style;
     }
 
@@ -153,9 +165,11 @@
         [dir="ltr"] & {
             border-right: $style;
         }
+
         [dir="rtl"] & {
             border-left: $style;
         }
+
         border-inline-end: $style;
     }
 }
@@ -165,9 +179,11 @@
         [dir="ltr"] & {
             border-left-color: $color;
         }
+
         [dir="rtl"] & {
             border-right-color: $color;
         }
+
         border-inline-start-color: $color;
     }
 
@@ -175,9 +191,11 @@
         [dir="ltr"] & {
             border-right-color: $color;
         }
+
         [dir="rtl"] & {
             border-left-color: $color;
         }
+
         border-inline-end-color: $color;
     }
 }
@@ -187,9 +205,11 @@
         [dir="ltr"] & {
             left: $value;
         }
+
         [dir="rtl"] & {
             right: $value;
         }
+
         offset-inline-start: $value;
     }
 
@@ -197,9 +217,11 @@
         [dir="ltr"] & {
             right: $value;
         }
+
         [dir="rtl"] & {
             left: $value;
         }
+
         offset-inline-end: $value;
     }
 }
