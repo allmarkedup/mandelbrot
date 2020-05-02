@@ -35,7 +35,7 @@
     flex-grow: 1;
     height: calc(100% - 3rem);
 
-    @include mq($until: navCollapse) {
+    @include mq($until: nav-collapse) {
         @include margin-inline(end, $width-sidebar);
 
         transform: translate3d(($width-sidebar * -1), 0, 0);
@@ -68,7 +68,7 @@
     background-color: $color-background-offset;
     padding: 1rem 0;
 
-    @include mq($until: navCollapse) {
+    @include mq($until: nav-collapse) {
         max-width: $width-sidebar;
     }
 }
