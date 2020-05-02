@@ -45,7 +45,7 @@
 
     min-width: 15em;
 
-    &[aria-selected=true] {
+    &[aria-selected="true"] {
         background-color: rgba($color-frame-border, 0.1) !important;
     }
 }

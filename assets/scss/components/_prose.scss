@@ -107,8 +107,13 @@
         text-align: start;
 
         // text-align: start isn't fully supported for th elements
-        [dir="ltr"] & { text-align: left; }
-        [dir="rtl"] & { text-align: right; }
+        [dir="ltr"] & {
+            text-align: left;
+        }
+
+        [dir="rtl"] & {
+            text-align: right;
+        }
     }
 
     tr:nth-child(even) {
